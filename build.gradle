@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'war'
+    id("io.freefair.lombok") version "8.10.2"
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    //spring
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.3.4'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.3.4'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.4'
+    implementation 'org.springframework.boot:spring-boot-starter-security:3.3.4'
+
+
+    //hibernate
+    implementation 'org.hibernate.orm:hibernate-core:6.6.1.Final'
+
+    //postgresql
+    implementation 'org.postgresql:postgresql:42.7.4'
+
+    //mapstruct
+    implementation 'org.mapstruct:mapstruct:1.6.2'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.2'
+
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.3.4'
+
+    testImplementation 'org.testcontainers:postgresql:1.20.2'
+
+
+
+
+
+
+
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << "-parameters"
+}
+
+
+test {
+    useJUnitPlatform()
+}
